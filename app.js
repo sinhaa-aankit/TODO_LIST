@@ -10,16 +10,20 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static("public"));
 
-app.use("view engine", "ejs");
+app.set('view engine', 'ejs');
 
 app.get("/", function(req, res){
-	var today = new Date();
 
-	if(today.getDay() === 6 || today.getDay() === 0){
-		res.send("<h1>Enjoy! It's the weekend</h1>");
+	var today = new Date();
+	var currentDay = today.getDay();
+	var day = "";
+
+	if(currentDay === 6 || currentDay === 0){
+		day = "weekend";
 	}else{
-		res.send("<h1>Boo! I have to work</h1>");
+		day = "workday";
 	}
+	res.render("list", {anyDay: day});
 });
 
 
