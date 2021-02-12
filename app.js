@@ -10,13 +10,15 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static("public"));
 
+app.use("view engine", "ejs");
+
 app.get("/", function(req, res){
 	var today = new Date();
 
 	if(today.getDay() === 6 || today.getDay() === 0){
-		res.send("Enjoy! It's the weekend");
+		res.send("<h1>Enjoy! It's the weekend</h1>");
 	}else{
-		res.send("Boo! I have to work");
+		res.send("<h1>Boo! I have to work</h1>");
 	}
 });
 
