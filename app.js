@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
+var todoItems = [];
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static("public"));
@@ -25,7 +27,14 @@ app.get("/", function(req, res){
 	var day = today.toLocaleDateString("en-US", options);
 
 
-	res.render("list", {anyDay: day});
+	res.render("list", {anyDay: day, newTodoItems: todoItems});
+});
+
+app.post("/", function(req,res){
+	var item = req.body.newItem;
+	todoItems.push(item);
+
+	res.redirect("/");
 });
 
 
