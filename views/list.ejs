@@ -7,12 +7,12 @@
 </head>
 <body>
 	<div class="box" id="heading">
-		<h1 style="color: gray"> <%=anyDay%></h1>
+		<h1 style="color: gray"> <%= listTitle %></h1>
 	</div>
 
 	<div class="box">
 
-		<% for(var i=0; i<newTodoItems.length; i++){ %>
+		<% for(let i=0; i<newTodoItems.length; i++){ %>
 			<div class="item">
 				<input type="checkbox">
 				<p> <%= newTodoItems[i] %> </p>
@@ -20,9 +20,9 @@
 			
 		<% } %>
 
-		<form class="" action="/" method="post">
+		<form class="item" action="/" method="post">
 			<input type="text" name="newItem" placeholder="Add New Item" autocomplete="off">
-			<button type="submit" name="button"> + </button>
+			<button type="submit" name="list" value=<%= listTitle %>> + </button>
 		</form>
 	
 	</div>
@@ -30,4 +30,5 @@
 	
 
 </body>
+<footer>Copyright AKS</footer>
 </html>
